@@ -1,0 +1,16 @@
+{% extends "to_do_list_app/base.html" %}
+
+{% block content %}
+
+<a href="{% url 'to_do_list_app:work' work.id %}">{{  work  }}</a>
+
+<p>Edit description: </p>
+
+<form action="{% url 'to_do_list_app:edit_description' description.id %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">Edit description</button>
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "to_do_list_app/base.html" %}
+
+{% block content %}
+<p>Works</p>
+
+<ul>
+    {% for work in works %}
+        <li>
+            <a href="{% url 'to_do_list_app:work' work.id %}">{{ work }}</a>
+            {{ work.due_date }} </br>
+            <p>Day left: {{ work.remaining_days }} days</p>
+        </li>
+    {% empty %}
+        <li>There is no work has been add yet.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'to_do_list_app:new_work' %}">Add new work</a>
+
+{% endblock content %}
